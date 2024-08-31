@@ -24,7 +24,7 @@ function dynamic_post_importer_view_logs_page() {
 
     if (file_exists($log_file)) {
         $log_content = file_get_contents($log_file);
-        echo '<textarea readonly style="width: 100%; height: 400px;">' . esc_textarea($log_content) . '</textarea>';
+        echo '<textarea readonly style="width: 100%; height: 80vh; overflow:scroll;">' . esc_textarea($log_content) . '</textarea>';
     } else {
         echo '<p>No logs found.</p>';
     }

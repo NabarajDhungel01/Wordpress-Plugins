@@ -15,4 +15,4 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 include_once(plugin_dir_path(__FILE__) . 'includes/post-importer.php'); // Core import functionality
 include_once(plugin_dir_path(__FILE__) . 'includes/dynamic-post-importer-debugger.php'); // Logging/debugging
 include_once(plugin_dir_path(__FILE__) . 'includes/manual-post-importer.php'); // Manual import functionality
-include_once(plugin_dir_path(__FILE__) . 'includes/settings.php'); // Settings page 
+include_once(plugin_dir_path(__FILE__) . 'includes/settings.php'); // Settings page
