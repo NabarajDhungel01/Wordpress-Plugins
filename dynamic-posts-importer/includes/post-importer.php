@@ -111,7 +111,8 @@ function dynamic_post_importer_import_posts() {
     foreach ($posts as $post_data) {
         $post_title = wp_strip_all_tags($post_data['title']['rendered']);
         $post_content = $post_data['content']['rendered'];
-    
+        $original_post_url = isset($post_data['link']) ? esc_url_raw($post_data['link']) : '';
+
         // Insert the post
         $post_id = wp_insert_post(array(
             'post_title'   => $post_title,
@@ -123,6 +124,12 @@ function dynamic_post_importer_import_posts() {
         if (is_wp_error($post_id)) {
             dynamic_post_importer_log('Failed to insert post: ' . $post_title);
             continue;
+        }
+
+        // Add custom field for original post URL
+        if (!empty($original_post_url)) {
+            update_post_meta($post_id, 'original_post_url', $original_post_url);
+            dynamic_post_importer_log('Added original post URL to post: ' . $post_title . ' | URL: ' . $original_post_url);
         }
     
         // Fetch and attach the featured image URL
